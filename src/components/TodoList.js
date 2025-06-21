@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity, Text } from 'react-native';
-import styles from '../style';
+import styles from '../../style';
 import TodoItem from './TodoItem';
 
 export default function TodoList({ todos, filter, setFilter, onToggleStatus, onDelete }) {

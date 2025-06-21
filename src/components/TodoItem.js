@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from '../style';
+import styles from '..//..//style';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function TodoItem({ todo, onToggleStatus, onDelete }) {
   return (
-    <View style={styles.todoItem}>
+    <View style={styles.todoItemRow}>
       <TouchableOpacity onPress={() => onToggleStatus(todo.id)} style={{ flex: 1 }}>
         <Text style={[styles.todoTitle, todo.status === 'done' && styles.done]}>
           {todo.title}

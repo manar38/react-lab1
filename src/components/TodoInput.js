@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button } from 'react-native';
-import styles from '../style';
+import styles from '../../style';
 
 export default function TodoInput({ onAdd }) {
   const [title, setTitle] = useState('');
