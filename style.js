@@ -63,6 +63,26 @@ const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: 'green',
   },
+  todoItemRow: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: 15,
+  borderWidth: 1,
+  borderColor: '#ddd',
+  borderRadius: 6,
+  marginVertical: 6,
+},
+
+todoTextContainer: {
+  flex: 1,
+  paddingRight: 10,
+},
+
+deleteIcon: {
+  paddingLeft: 10,
+},
+
 });
 
 export default styles;
