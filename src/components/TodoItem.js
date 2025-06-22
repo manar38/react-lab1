@@ -12,6 +12,9 @@ export default function TodoItem({ todo, onToggleStatus, onDelete }) {
         </Text>
         <Text style={styles.todoDesc}>{todo.desc}</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => onToggleStatus(todo.id)}>
+          <MaterialIcons name="check-circle" size={24} color="green" />
+        </TouchableOpacity>
       <TouchableOpacity onPress={() => onDelete(todo.id)}>
         <MaterialIcons name="delete" size={24} color="red" />
       </TouchableOpacity>

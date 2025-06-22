@@ -1,60 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
-import styles from './style';
-import TodoInput from './src/components/TodoInput';
-import TodoList from './src/components/TodoList';
-import { getTodos, saveTodos } from './storage';
-
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './src/navigation/TabNavigator';
+import { SafeAreaView, StatusBar } from 'react-native';
 export default function App() {
-  const [todos, setTodos] = useState([]);
-  const [filter, setFilter] = useState('All');
-
-  useEffect(() => {
-    (async () => {
-      const saved = await getTodos();
-      if (saved) setTodos(saved);
-    })();
-  }, []);
-
-  useEffect(() => {
-    saveTodos(todos);
-  }, [todos]);
-
-  const addTodo = (title, desc) => {
-    const newTodo = {
-      id: Date.now().toString(),
-      title,
-      desc,
-      status: 'active',
-    };
-    setTodos([newTodo, ...todos]);
-  };
-
-  const toggleStatus = (id) => {
-    setTodos(todos.map(todo =>
-      todo.id === id ? { ...todo, status: todo.status === 'done' ? 'active' : 'done' } : todo
-    ));
-  };
-
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
-
-  const filteredTodos = todos.filter(todo =>
-    filter === 'All' ? true : todo.status === filter.toLowerCase()
-  );
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>TODO APP</Text>
-      <TodoInput onAdd={addTodo} />
-      <TodoList
-        todos={filteredTodos}
-        filter={filter}
-        setFilter={setFilter}
-        onToggleStatus={toggleStatus}
-        onDelete={deleteTodo}
-      />
-    </View>
+    <SafeAreaView style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
